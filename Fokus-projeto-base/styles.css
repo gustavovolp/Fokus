@@ -65,7 +65,7 @@
     }
 
     .app__card-timer {
-        font-size: 6rem;
+        font-size: 3rem;
     }
 
     .app__section-active-task {
@@ -404,7 +404,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-secondary);
     text-align: center;
     font-family: Unbounded;
-    font-size: 12rem;
+    font-size: 10rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -543,4 +543,20 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     gap: 1rem;
     
+}
+
+.app__card-button_btn{
+    padding: 0.2rem;
+    width: 5rem;
+    color: var(--color-secondary);
+    border: none;
+    cursor: pointer;
+    outline: inherit;
+    border-radius: 0.8rem;
+    background: var(--linear-botes);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
