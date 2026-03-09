@@ -18,11 +18,14 @@ const beepBt = new Audio('./sons/beep.mp3')
 musica.loop = true;
 
 //valor do temporizador
-let tempoDecorridoEmSegundos = 1500
+let tempoDecorridoEmSegundos = 3600
 const startPauseBtn = document.getElementById('start-pause')
 let intervaloId = null
 const iniciarOuPausarBt = document.querySelector('#start-pause span')
 const iniciarOuPausarImg = document.querySelector('.app__card-primary-butto-icon')
+
+const menosTempo = document.getElementById('decrease')
+const maisTempo = document.getElementById('increase')
 
 //Print tempo na tela
 const tempoNatela = document.getElementById('timer')
@@ -38,21 +41,31 @@ musicaFocoInput.addEventListener('change', () => {
 
 
 focoBt.addEventListener('click', () => {
-    tempoDecorridoEmSegundos = 1500
+    tempoDecorridoEmSegundos = 3600
     alterarContexto('foco')
     focoBt.classList.add('active')
 })
 
 curtoBt.addEventListener('click', () => {
-    tempoDecorridoEmSegundos = 300
+    tempoDecorridoEmSegundos = 1800
     alterarContexto('descanso-curto')
     curtoBt.classList.add('active')
 })
 
 longoBt.addEventListener('click', () => {
-    tempoDecorridoEmSegundos = 900
+    tempoDecorridoEmSegundos = 3600
     alterarContexto('descanso-longo')
     longoBt.classList.add('active')
+})
+
+menosTempo.addEventListener('click', () => {
+    tempoDecorridoEmSegundos = tempoDecorridoEmSegundos - 30
+    monstrarTempo()
+})
+
+maisTempo.addEventListener('click', () => {
+    tempoDecorridoEmSegundos = tempoDecorridoEmSegundos + 30
+    monstrarTempo()
 })
 
 function alterarContexto(contexto){
@@ -96,6 +109,8 @@ const contagemRegresiva = () => {
 }
 
 startPauseBtn.addEventListener('click', iniciarOuPausar)
+
+
     
 
 
@@ -119,8 +134,8 @@ function zerar(){
 }
 
 function monstrarTempo(){
-    const tempo = new Date (tempoDecorridoEmSegundos * 1000)
-    const tempoFormatado = tempo.toLocaleTimeString('pt-Br', {minute: '2-digit', second: '2-digit'})
+    const tempo =  new Date (tempoDecorridoEmSegundos * 1000)
+    const tempoFormatado = tempo.toLocaleTimeString('pt-Br', {timeZone: 'UTC', hour: '2-digit', minute: '2-digit', second: '2-digit'})
     tempoNatela.innerHTML = `${tempoFormatado}`
 }
 
